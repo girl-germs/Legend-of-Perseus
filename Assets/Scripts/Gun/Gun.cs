@@ -1,42 +1,49 @@
 using UnityEngine;
+using System.Collections;
 
 public class Gun : MonoBehaviour
 {
+    [Header("References")]
     public Transform bulletSpawnPoint;
-    public float rayDistance = 100f;
     public LineRenderer lineRenderer;
+
+    [Header("Settings")]
+    public float rayDistance = 100f;
     public float laserDuration = 0.05f;
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            ShootRay();
+            ShootLaser();
         }
     }
 
-    void ShootRay()
+    void ShootLaser()
     {
-        Ray ray = new Ray(bulletSpawnPoint.position, bulletSpawnPoint.forward);
+        // Fire ray from center of screen (crosshair)
+        Ray ray = Camera.main.ScreenPointToRay(
+            new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
         RaycastHit hit;
-
-        Vector3 endPosition = ray.origin + ray.direction * rayDistance;
+        Vector3 targetPoint = ray.origin + ray.direction * rayDistance;
 
         if (Physics.Raycast(ray, out hit, rayDistance))
         {
-            Debug.Log("Hit: " + hit.collider.name);
-            endPosition = hit.point;
+            targetPoint = hit.point;
 
             if (hit.collider.CompareTag("Target"))
             {
-                Destroy(hit.collider.gameObject);
+                Renderer rend = hit.collider.GetComponent<Renderer>();
+                Collider col = hit.collider.GetComponent<Collider>();
+                if (rend != null) rend.enabled = false;
+                if (col != null) col.enabled = false;
             }
         }
 
-        StartCoroutine(FireLaser(ray.origin, endPosition));
+        StartCoroutine(FireLaser(bulletSpawnPoint.position, targetPoint));
     }
 
-    System.Collections.IEnumerator FireLaser(Vector3 start, Vector3 end)
+    IEnumerator FireLaser(Vector3 start, Vector3 end)
     {
         lineRenderer.SetPosition(0, start);
         lineRenderer.SetPosition(1, end);
