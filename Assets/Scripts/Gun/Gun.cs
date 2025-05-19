@@ -10,6 +10,7 @@ public class Gun : MonoBehaviour
     [Header("Settings")]
     public float rayDistance = 100f;
     public float laserDuration = 0.05f;
+    public float shootCooldown = 1f;
 
     void Update()
     {

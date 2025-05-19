@@ -18,7 +18,7 @@ public class FirstPersonController : MonoBehaviour
     public float dashDuration = 0.2f;
     public float dashCooldown = 1f;
     public ParticleSystem dashEffect;
-    public DashEffectUI dashZoomEffect; 
+    public DashEffectUI dashZoomEffect;
 
     private CharacterController controller;
     private Vector3 velocity;
