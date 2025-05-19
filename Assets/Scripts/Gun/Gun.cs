@@ -21,9 +21,9 @@ public class Gun : MonoBehaviour
 
     void ShootLaser()
     {
-        // Fire ray from center of screen (crosshair)
         Ray ray = Camera.main.ScreenPointToRay(
-            new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
+            new Vector3(Screen.width / 2f, Screen.height / 2f, 0f)
+        );
         RaycastHit hit;
         Vector3 targetPoint = ray.origin + ray.direction * rayDistance;
 
@@ -31,12 +31,33 @@ public class Gun : MonoBehaviour
         {
             targetPoint = hit.point;
 
+           
             if (hit.collider.CompareTag("Target"))
             {
                 Renderer rend = hit.collider.GetComponent<Renderer>();
                 Collider col = hit.collider.GetComponent<Collider>();
                 if (rend != null) rend.enabled = false;
                 if (col != null) col.enabled = false;
+            }
+
+            
+            if (hit.collider.CompareTag("Trigger"))
+            {
+                TriggerPlatform trigger = hit.collider.GetComponent<TriggerPlatform>();
+                if (trigger != null)
+                {
+                    trigger.Activate();
+                }
+            }
+
+            
+            if (hit.collider.CompareTag("Enemy"))
+            {
+                EnemyHit enemy = hit.collider.GetComponent<EnemyHit>();
+                if (enemy != null)
+                {
+                    enemy.GetShot();
+                }
             }
         }
 
