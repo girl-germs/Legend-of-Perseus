@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - canPickUp
   - Collectible
+  - Floor
   layers:
   - Default
   - TransparentFX
