@@ -10,6 +10,8 @@ TagManager:
   - canPickUp
   - Collectible
   - Floor
+  - KillBrick
+  - TargetOnly
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - TargetOnly
   - 
   - 
   - 

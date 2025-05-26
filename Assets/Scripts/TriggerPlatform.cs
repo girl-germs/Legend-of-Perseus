@@ -1,25 +1,26 @@
 using UnityEngine;
+using System.Collections;
 
 public class TriggerPlatform : MonoBehaviour
 {
     public GameObject platformToRaise;
-    public Vector3 raisedPosition = new Vector3(0, 0, 0);
+    public Vector3 raisedPosition = new Vector3(0, 1, 0);
     public float riseDuration = 1f;
 
     private bool triggered = false;
 
     public void Activate()
     {
+        Debug.Log("TriggerPlatform.Activate() called");
         if (!triggered)
+        {
+            triggered = true;
             StartCoroutine(RaisePlatform());
+        }
     }
 
-    private System.Collections.IEnumerator RaisePlatform()
+    private IEnumerator RaisePlatform()
     {
-        triggered = true;
-
-        platformToRaise.SetActive(true);
-
         Vector3 startPos = platformToRaise.transform.position;
         Vector3 endPos = raisedPosition;
 
@@ -32,5 +33,7 @@ public class TriggerPlatform : MonoBehaviour
             platformToRaise.transform.position = Vector3.Lerp(startPos, endPos, t);
             yield return null;
         }
+
+        platformToRaise.transform.position = endPos;
     }
 }

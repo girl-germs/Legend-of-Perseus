@@ -3,14 +3,11 @@ using System.Collections;
 
 public class Gun : MonoBehaviour
 {
-    [Header("References")]
     public Transform bulletSpawnPoint;
     public LineRenderer lineRenderer;
 
-    [Header("Settings")]
     public float rayDistance = 100f;
     public float laserDuration = 0.05f;
-    public float shootCooldown = 1f;
 
     void Update()
     {
@@ -31,33 +28,14 @@ public class Gun : MonoBehaviour
         if (Physics.Raycast(ray, out hit, rayDistance))
         {
             targetPoint = hit.point;
+            Debug.Log("Hit: " + hit.collider.name);
 
-           
             if (hit.collider.CompareTag("Target"))
             {
-                Renderer rend = hit.collider.GetComponent<Renderer>();
-                Collider col = hit.collider.GetComponent<Collider>();
-                if (rend != null) rend.enabled = false;
-                if (col != null) col.enabled = false;
-            }
-
-            
-            if (hit.collider.CompareTag("Trigger"))
-            {
-                TriggerPlatform trigger = hit.collider.GetComponent<TriggerPlatform>();
-                if (trigger != null)
+                GameObject triggerObj = GameObject.Find("PlatformTrigger");
+                if (triggerObj != null)
                 {
-                    trigger.Activate();
-                }
-            }
-
-            
-            if (hit.collider.CompareTag("Enemy"))
-            {
-                EnemyHit enemy = hit.collider.GetComponent<EnemyHit>();
-                if (enemy != null)
-                {
-                    enemy.GetShot();
+                    triggerObj.GetComponent<TriggerPlatform>()?.Activate();
                 }
             }
         }
