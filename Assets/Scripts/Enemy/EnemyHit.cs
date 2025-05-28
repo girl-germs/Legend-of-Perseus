@@ -19,7 +19,9 @@ public class EnemyHit : MonoBehaviour
         StartCoroutine(CameraShake.Instance.Shake(shakeDuration, shakeMagnitude));
     }
 
-    Destroy(gameObject);
+    gameObject.SetActive(false);
+Destroy(gameObject, 1f);
+
 }
 
 }
