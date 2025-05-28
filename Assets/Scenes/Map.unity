@@ -1406,8 +1406,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9999988, y: 1, z: 1.024167}
-  m_Center: {x: 0, y: 0, z: 0.012082575}
+  m_Size: {x: 0.9999988, y: 1, z: 1.2295333}
+  m_Center: {x: 0, y: 0, z: -0.09060036}
 --- !u!23 &1489378378
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9556,6 +9556,8 @@ GameObject:
   - component: {fileID: 2076028803646603666}
   - component: {fileID: 7292128937726490380}
   - component: {fileID: 1167792716509408211}
+  - component: {fileID: 7292128937726490382}
+  - component: {fileID: 7292128937726490381}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -12712,10 +12714,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d904ede9147f3c641b77e2709d8e813a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpawnPoint: {fileID: 8765242281622431971}
-  lineRenderer: {fileID: 623772866135682069}
   rayDistance: 10000
+  playerCamera: {fileID: 429672383311686078}
+  lineRenderer: {fileID: 623772866135682069}
   laserDuration: 0.05
+  bulletSpawnPoint: {fileID: 8765242281622431971}
 --- !u!23 &3995458753476737129
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15976,6 +15979,7 @@ GameObject:
   - component: {fileID: 5640423265599377047}
   - component: {fileID: 5425505348316874022}
   - component: {fileID: 5640423265599377048}
+  - component: {fileID: 5640423265599377049}
   m_Layer: 0
   m_Name: Cube.041
   m_TagString: Untagged
@@ -16577,8 +16581,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.036710836, y: 0.053155437, z: 0.3130853}
-  m_Center: {x: 0.0015525705, y: 0.016577756, z: 0.14654328}
+  m_Size: {x: 0.036710836, y: 0.078517236, z: 0.3130853}
+  m_Center: {x: 0.0015525705, y: 0.029258657, z: 0.14654328}
 --- !u!33 &5341121481935323336
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -17426,8 +17430,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.020000061, y: 0.033141803, z: 0.024385063}
-  m_Center: {x: 0.00000023958657, y: 0.00048121158, z: 0.0021925312}
+  m_Size: {x: 0.020000061, y: 0.015271266, z: 0.024385063}
+  m_Center: {x: 0.00000023931378, y: 0.009416571, z: 0.0021925315}
+--- !u!65 &5640423265599377049
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5089668104332716862}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.020000061, y: 0.011524927, z: 0.024385063}
+  m_Center: {x: 0.00000023931378, y: -0.010327332, z: 0.0021925315}
 --- !u!4 &5655351832369082930
 Transform:
   m_ObjectHideFlags: 0
@@ -21669,6 +21694,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2646134513282289528}
   m_Mesh: {fileID: -5495902117074765545, guid: cb16e4cbfae7c4e44bb0286875496719, type: 3}
+--- !u!114 &7292128937726490381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2646134513282289528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d904ede9147f3c641b77e2709d8e813a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayDistance: 100
+  playerCamera: {fileID: 0}
+  lineRenderer: {fileID: 0}
+  laserDuration: 0.05
+  bulletSpawnPoint: {fileID: 0}
+--- !u!114 &7292128937726490382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2646134513282289528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6bee7b32c74c774480780b268ce9357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformToRaise: {fileID: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
+  riseSpeed: 2
 --- !u!33 &7299485410863859033
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -25923,6 +25980,4 @@ SceneRoots:
   - {fileID: 3689823505188607786}
   - {fileID: 317096744886391880}
   - {fileID: 1297698562}
-  - {fileID: 929394681}
-  - {fileID: 1017915052}
   - {fileID: 516819571}
