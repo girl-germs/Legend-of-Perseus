@@ -89,7 +89,7 @@ public class FirstPersonController : MonoBehaviour
 
     IEnumerator Dash()
     {
-        isDashing = true;
+        isDashing = false;
         dashCooldownTimer = dashCooldown;
         dashDirection = transform.forward;
 
