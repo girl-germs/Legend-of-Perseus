@@ -11,7 +11,7 @@ TagManager:
   - Collectible
   - Floor
   - KillBrick
-  - TargetOnly
+  - evil
   layers:
   - Default
   - TransparentFX
