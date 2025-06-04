@@ -18,6 +18,7 @@ public class DashController : MonoBehaviour
     void Start()
     {
         movementScript = GetComponent<FirstPersonMovement>();
+        enabled = false;
     }
 
     void Update()
