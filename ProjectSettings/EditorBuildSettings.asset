@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TitleScreen.unity
     guid: 305841c50dabbaf47b809194278f13b0
+  - enabled: 1
+    path: Assets/Scenes/death.unity
+    guid: 8495d22e29ba7b5448ab5de134f47fb9
+  - enabled: 1
+    path: Assets/Scenes/Legend of Perseus.unity
+    guid: 76b8e513ee69e79449bbad98cce204fd
   m_configObjects: {}
