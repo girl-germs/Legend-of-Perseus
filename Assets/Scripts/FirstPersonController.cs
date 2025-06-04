@@ -1,7 +1,7 @@
-using System.Collections;
 using UnityEngine;
 
-public class FirstPersonController : MonoBehaviour
+[RequireComponent(typeof(CharacterController))]
+public class FirstPersonMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 10f;
@@ -13,21 +13,11 @@ public class FirstPersonController : MonoBehaviour
     public float mouseSensitivity = 100f;
     public Transform cameraTransform;
 
-    [Header("Dash Settings")]
-    public float dashForce = 20f;
-    public float dashDuration = 0.2f;
-    public float dashCooldown = 1f;
-    public ParticleSystem dashEffect;
-    public DashEffectUI dashZoomEffect;
+    [HideInInspector] public CharacterController controller;
+    [HideInInspector] public Vector3 velocity;
+    [HideInInspector] public bool isGrounded;
 
-    private CharacterController controller;
-    private Vector3 velocity;
-    private bool isGrounded;
     private float xRotation = 0f;
-
-    private bool isDashing = false;
-    private float dashCooldownTimer = 0f;
-    private Vector3 dashDirection;
 
     void Start()
     {
@@ -41,13 +31,6 @@ public class FirstPersonController : MonoBehaviour
         Look();
         Move();
         Jump();
-
-        dashCooldownTimer -= Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dashCooldownTimer <= 0f && !isDashing)
-        {
-            StartCoroutine(Dash());
-        }
     }
 
     void Look()
@@ -85,28 +68,5 @@ public class FirstPersonController : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
         }
-    }
-
-    IEnumerator Dash()
-    {
-        isDashing = false;
-        dashCooldownTimer = dashCooldown;
-        dashDirection = transform.forward;
-
-        if (dashZoomEffect != null)
-            dashZoomEffect.PlayEffect();
-
-        if (dashEffect != null)
-            dashEffect.Play();
-
-        float elapsed = 0f;
-        while (elapsed < dashDuration)
-        {
-            controller.Move(dashDirection * dashForce * Time.deltaTime);
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        isDashing = false;
     }
 }
