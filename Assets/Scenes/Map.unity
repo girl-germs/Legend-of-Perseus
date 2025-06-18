@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28da8d021cb0a047aabdb5316aa7326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashController: {fileID: 7208435756049795380}
 --- !u!65 &101354452
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -758,6 +759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28da8d021cb0a047aabdb5316aa7326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashController: {fileID: 0}
 --- !u!65 &705438562
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1767,8 +1769,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9999988, y: 1, z: 1.2295333}
-  m_Center: {x: 0, y: 0, z: -0.09060036}
+  m_Size: {x: 0.9999988, y: 1, z: 1.1645353}
+  m_Center: {x: 0, y: 0, z: -0.058101043}
 --- !u!23 &1489378378
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2059,7 +2061,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -16978,8 +16980,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.036710836, y: 0.078517236, z: 0.3130853}
-  m_Center: {x: 0.0015525705, y: 0.029258657, z: 0.14654328}
+  m_Size: {x: 0.036710836, y: 0.053405702, z: 0.3130853}
+  m_Center: {x: 0.0015525705, y: 0.016702909, z: 0.14654328}
 --- !u!33 &5341121481935323336
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -22034,13 +22036,26 @@ GameObject:
   - component: {fileID: 3901834440223051113}
   - component: {fileID: 6272350533493105730}
   - component: {fileID: 1886011498}
+  - component: {fileID: 7333631253468868286}
   m_Layer: 0
   m_Name: Cube.042
-  m_TagString: KillBrick
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7333631253468868286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333631253468868285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2dce02c589c97a4da0b91767dbb8b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &7340341734082153975
 MeshFilter:
   m_ObjectHideFlags: 0
