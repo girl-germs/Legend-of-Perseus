@@ -12,7 +12,7 @@ public class GunRaycast : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))  // hoi 
         {
             ShootRay();
         }
@@ -23,41 +23,37 @@ public class GunRaycast : MonoBehaviour
         Ray ray = new Ray(bulletSpawnPoint.position, playerCamera.transform.forward);
         RaycastHit hit;
         Vector3 targetPoint = ray.origin + ray.direction * rayDistance;
+        
+        
 
         if (Physics.Raycast(ray, out hit, rayDistance))
         {
             targetPoint = hit.point;
 
             GameObject hitObject = hit.collider.gameObject;
+            TriggerPlatform trigger = hitObject.GetComponent<TriggerPlatform>();
 
-            switch (hitObject.tag)
+            if (trigger != null)
             {
-                case "Target":       //target
-                    Destroy(hitObject);
-                    break;
-
-                case "Trigger":    //trigger activate (super sigma)
-                    Debug.Log("Trigger hit!");
-                    TriggerScript trigger = hitObject.GetComponent<TriggerScript>();
-                    if (trigger != null)
-                    {
-                        trigger.Activate();
-                    }
-                    else
-                    {
-                         Debug.LogWarning("No TriggerScript found on object with Trigger tag!");
-                     }
-                    break;
-
-
-                case "Enemy":     // enemy homo's
-                    EnemyHit enemy = hitObject.GetComponent<EnemyHit>();
-                    if (enemy != null)
-                    {
-                        enemy.GetShot();
-                    }
-                    break;
+                trigger.Activate();
             }
+
+                switch (hitObject.tag)
+                {
+                    case "Target":       //target
+                        Destroy(hitObject);
+                        break;
+
+                    
+
+                    case "Enemy":     // enemy homo's
+                        EnemyHit enemy = hitObject.GetComponent<EnemyHit>();
+                        if (enemy != null)
+                        {
+                            enemy.GetShot();
+                        }
+                        break;
+                }
         }
 
         

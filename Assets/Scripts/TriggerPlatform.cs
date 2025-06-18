@@ -1,46 +1,66 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UIElements;
+using System.Timers;
+using System.Collections.Generic;
 
 public class TriggerPlatform : MonoBehaviour
 {
+
+    [SerializeField] private GameObject lerpTarget;
     public GameObject cubeToRaise;
+    public GameObject cubesToRaise;
+
     public Vector3 raisedPosition = new Vector3(0, 1, 0);
+    public Vector3 raisedposition2;
     public float riseDuration = 1f;
 
     private bool triggered = false;
+    private bool isActive;
 
     public void Activate()
     {
-        Debug.Log("✅ TriggerScript.Activate() called");
+        
 
-        if (cubeToRaise == null)
-        {
-            Debug.LogError("❌ cubeToRaise not assigned in inspector!");
-            return;
-        }
 
         if (!triggered)
         {
             triggered = true;
-            StartCoroutine(RaiseCube());
         }
     }
-
-    private IEnumerator RaiseCube()
+    void Start()
     {
-        Vector3 start = cubeToRaise.transform.position;
-        Vector3 end = raisedPosition;
-        float elapsed = 0f;
+        isActive = false;
+        raisedPosition = new Vector3(cubeToRaise.transform.position.x, cubeToRaise.transform.position.y + 9f, cubeToRaise.transform.position.z);
+        raisedposition2 = new Vector3(cubesToRaise.transform.position.x, cubesToRaise.transform.position.y + 9f, cubesToRaise.transform.position.z);
+    }
 
-        while (elapsed < riseDuration)
+    void Update()
+    {
+        if (triggered && !isActive)
         {
-            elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed / riseDuration);
-            cubeToRaise.transform.position = Vector3.Lerp(start, end, t);
-            yield return null;
+            lerp();
         }
 
-        cubeToRaise.transform.position = end;
-        Debug.Log("🏁 Cube reached final position!");
+
+        if (Vector3.Distance(cubesToRaise.transform.position, raisedPosition) < 0.05f)
+        {
+            isActive = true;
+
+        }
+
+        
+
+        
     }
+
+    void lerp()
+    {
+        cubeToRaise.transform.position = Vector3.Lerp(cubeToRaise.transform.position, raisedPosition, 5f * Time.deltaTime);
+        cubesToRaise.transform.position = Vector3.Lerp(cubesToRaise.transform.position, raisedposition2, 5f * Time.deltaTime);
+    }
+
+    
+
+
 }
