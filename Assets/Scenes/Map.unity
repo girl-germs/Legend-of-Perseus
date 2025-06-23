@@ -295,8 +295,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpTarget: {fileID: 410559925}
-  cubeToRaise: {fileID: 7664650470440016096}
-  cubesToRaise: {fileID: 8571162130576145102}
+  cubeToRaise: {fileID: 37364542077533143}
+  cubesToRaise: {fileID: 1727546732}
   raisedPosition: {x: 15.67367, y: 53.66651, z: -72.93349}
   raisedposition2: {x: 0, y: 0, z: 0}
   riseDuration: 1
@@ -8454,27 +8454,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 543450651717342212}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1072190897007633632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7208435756049795378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30a433fd0f9de3e4092747d38078300e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 10
-  jumpForce: 3
-  gravity: -30
-  airControl: 0.5
-  mouseSensitivity: 800
-  cameraTransform: {fileID: 2745357990754577584}
-  controller: {fileID: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  isGrounded: 0
 --- !u!33 &1075669130706906932
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -24312,7 +24291,6 @@ GameObject:
   - component: {fileID: 3995458753476737129}
   - component: {fileID: 1991379860390170902}
   - component: {fileID: 3662771028847319072}
-  - component: {fileID: 1072190897007633632}
   - component: {fileID: 436530752}
   - component: {fileID: 7208435756049795379}
   - component: {fileID: 7208435756049795380}
