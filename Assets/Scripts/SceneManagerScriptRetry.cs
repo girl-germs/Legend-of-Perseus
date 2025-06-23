@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagerScript : MonoBehaviour
 {
-    public void Loadscene(string sceneName)
+    public void Loadscene(string LegendOfPerseus)
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(LegendOfPerseus);
     }
 }

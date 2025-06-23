@@ -33,6 +33,7 @@ public class TriggerPlatform : MonoBehaviour
         isActive = false;
         raisedPosition = new Vector3(cubeToRaise.transform.position.x, cubeToRaise.transform.position.y + 9f, cubeToRaise.transform.position.z);
         raisedposition2 = new Vector3(cubesToRaise.transform.position.x, cubesToRaise.transform.position.y + 9f, cubesToRaise.transform.position.z);
+        transform.rotation = Quaternion.Euler(0f, 90f, 0f);
     }
 
     void Update()
