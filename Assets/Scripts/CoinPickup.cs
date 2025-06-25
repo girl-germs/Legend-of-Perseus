@@ -1,18 +1,54 @@
+using TMPro;
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class PickupManager : MonoBehaviour
 {
-    public int scoreValue = 0;
+    public float pickupRange = 2f; // How close the player needs to be to pick up coins
+    public static int score = 0; // Static variable for score
+    public TextMeshProUGUI scoreText; // UI Text to show score
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            
-            ScoreManager.instance.AddScore(scoreValue);
+            TryPickupNearbyCoin();
+        }
+    }
 
-          
-            Destroy(gameObject);
+    void TryPickupNearbyCoin()
+    {
+        // Detect all colliders within range
+        Collider[] hits = Physics.OverlapSphere(transform.position, pickupRange);
+
+        foreach (Collider hit in hits)
+        {
+            if (hit.CompareTag("Coin"))
+            {
+                // Optionally play sound
+                AudioSource audio = hit.GetComponent<AudioSource>();
+                if (audio != null)
+                {
+                    audio.Play();
+                }
+
+                // Increase score
+                score++;
+                UpdateScoreUI();
+
+                // Destroy the coin (after delay if sound is playing)
+                Destroy(hit.gameObject, audio != null ? audio.clip.length : 0f);
+
+                // Only pick up one coin at a time
+                break;
+            }
+        }
+    }
+
+    void UpdateScoreUI()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = "Score: " + score;
         }
     }
 }
