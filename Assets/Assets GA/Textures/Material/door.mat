@@ -131,10 +131,6 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-<<<<<<< Updated upstream
     - _EmissionColor: {r: 3.8008423, g: 6.0859413, b: 5.6073866, a: 1}
-=======
-    - _EmissionColor: {r: 0, g: 1, b: 0.37901783, a: 1}
->>>>>>> Stashed changes
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
